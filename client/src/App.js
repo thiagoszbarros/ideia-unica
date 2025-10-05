@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Assets from './Assets/Assets.js';
+import Assets from './Components/Assets/Assets.js';
 import Login from './Shared/Login.js';
 import ProtectedRoutes from './Shared/ProtectedRoutes.js';
 import Fallback from './Shared/Fallback.js';

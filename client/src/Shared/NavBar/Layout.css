@@ -1,0 +1,21 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f5f6fa;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+}
+
+/* Ajuste para a página de assets */
+.main-content .App {
+    background: transparent;
+    min-height: auto;
+    padding: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+}

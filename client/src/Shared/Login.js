@@ -74,6 +74,7 @@ function Login() {
                                 placeholder="Digite seu usuário"
                                 className="form-input"
                                 disabled={isLoading}
+                                autoComplete="username"
                             />
                         </div>
 
@@ -87,6 +88,7 @@ function Login() {
                                 placeholder="Digite sua senha"
                                 className="form-input"
                                 disabled={isLoading}
+                                autoComplete="current-password"
                             />
                         </div>
 
