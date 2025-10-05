@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import Token from './Shared/Token.js'
+import Token from './Token.js'
 
-function Home() {
+function Fallback() {
     return !Token() ? <Navigate to='/login' /> : <Navigate to='/assets' />;
 }
 
-export default Home;
+export default Fallback;
