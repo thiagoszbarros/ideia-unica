@@ -1,8 +1,14 @@
 import { Navigate } from "react-router-dom";
-import Token from './Token.js'
+import { useAuth } from './useAuth';
 
 function Fallback() {
-    return !Token() ? <Navigate to='/login' /> : <Navigate to='/assets' />;
+    const { isAuthenticated } = useAuth();
+
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+    }
+
+    return !isAuthenticated ? <Navigate to='/login' /> : <Navigate to='/assets' />;
 }
 
 export default Fallback;

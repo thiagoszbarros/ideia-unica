@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Api from './Api.js';
 import { useNavigate } from 'react-router-dom';
+import { clearCache } from './useAuth';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -46,6 +47,7 @@ function Login() {
 
     const handleSuccessLogin = async (data) => {
         localStorage.setItem('token', data.token);
+        clearCache(); 
         return navigate('/assets');
     }
 

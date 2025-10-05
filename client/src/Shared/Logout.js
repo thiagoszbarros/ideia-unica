@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Token from "./Token";
+import { clearCache } from './useAuth';
 
 function Logout() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    if (!Token()) {
-        return navigate('/login');
-    }
-
-    function handleLogout() {
+    async function handleLogout() {
         setIsLoading(true);
         localStorage.removeItem('token');
+        clearCache();  
         navigate('/login');
     }
 

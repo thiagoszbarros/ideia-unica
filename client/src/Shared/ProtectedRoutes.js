@@ -1,8 +1,14 @@
-import {Outlet, Navigate} from 'react-router-dom';
-import Token from './Token';
+import { Outlet, Navigate } from 'react-router-dom';
+import { useAuth } from './useAuth';
 
 function ProtectedRoutes() {
-    return Token() ? <Outlet/> : <Navigate to="/login" />;
+    const { isAuthenticated } = useAuth();
+
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+    }
+
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default ProtectedRoutes;
