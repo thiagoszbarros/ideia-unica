@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Api from './Shared/api.js';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -9,10 +9,6 @@ function Login() {
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
     const navigate = useNavigate();
-
-    if(localStorage.getItem('token')){
-        return <Navigate to='assets' />
-    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -49,8 +45,6 @@ function Login() {
     };
 
     const handleSuccessLogin = async (data) => {
-        setMessage(data.message);
-        setMessageType('success');
         localStorage.setItem('token', data.token);
         return navigate('/assets');
     }

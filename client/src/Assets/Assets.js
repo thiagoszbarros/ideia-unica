@@ -1,4 +1,4 @@
-import Logout from "../Shared/Logout/Logout.js";
+import Logout from "../Shared/Logout.js";
 
 function Assets() {
 
