@@ -12,6 +12,10 @@ app.post('/login', (req, res) => {
   new LoginController().login(req, res);
 });
 
+app.post('/token/verify', (req, res) => {
+  new LoginController().verify(req, res);
+});
+
 app.get('/', async (_, res) => {
   res.json({
     message: 'Server is running',

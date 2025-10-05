@@ -28,15 +28,38 @@ export default class LoginController {
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_TTL }
       );
-    const expiresAt = new Date(Date.now() + process.env.JWT_TTL * 1000);
+
+    const now = new Date();
+
+    const expiresAt = new Date(now + +process.env.JWT_TTL);
     await QueryService
       .update(
         'users',
         { id: user.id },
-        { token: token, expires_at: expiresAt }
+        { token: token, expires_at: expiresAt, updated_at: now }
       );
     res
     .status(200)
     .json({ message: 'Login successful', token });
+  }
+
+  verify(req, res){
+    const token = req.body?.token;
+
+    if(!token){
+      return res
+      .status(400)
+      .json({message: 'Token is required'});
+    }
+
+    jsonwebtoken.verify(token, process.env.JWT_SECRET, (err, _) => {
+      if (err) {
+        return res.status(400).json({ message: 'Token is invalid' })
+      };
+    });
+
+    return res
+    .status(200)
+    .json({message: 'Token is valid'});
   }
 }
